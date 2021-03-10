@@ -184,7 +184,7 @@ function printNumOnlineUsers() {
 	print('Online Users: ' + userMap.size);
 }
 
-server.listen(listen_port);
+server.listen(process.env.PORT || listen_port);
 /*const express = require('express');
 const app = express();
 
