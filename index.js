@@ -5,8 +5,9 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/public/index.html');
 });
+
 
 
 // Reserved Events
