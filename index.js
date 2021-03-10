@@ -4,6 +4,11 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+
+
 // Reserved Events
 let ON_CONNECTION = 'connection';
 let ON_DISCONNECT = 'disconnect';
