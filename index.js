@@ -68,7 +68,7 @@ function onEachUserConnection(socket) {
 	printNumOnlineUsers();
 
 	//send the connected users...
-	sendConnectedUsers(socket);
+	//sendConnectedUsers(socket);
 	onMessage(socket);
 	checkOnline(socket);
 	onUserDisconnect(socket);
