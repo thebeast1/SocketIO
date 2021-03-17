@@ -62,8 +62,10 @@ function onEachUserConnection(socket) {
 	print('Connected => Socket ID ' + socket.id + ', User: ' + JSON.stringify(socket.handshake.query));
 
 	var from_user_id = socket.handshake.query.from;
+	var from_user_name = socket.handshake.query.name;  //----->
+
 	// Add to Map
-	let userMapVal = { socket_id: socket.id };
+	let userMapVal = { socket_id: socket.id , name:from_user_name};  // ---> name
 	addUserToMap(from_user_id, userMapVal);
 	print(userMap);
 	printNumOnlineUsers();
