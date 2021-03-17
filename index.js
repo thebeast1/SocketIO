@@ -76,7 +76,8 @@ function onEachUserConnection(socket) {
 
 function sendConnectedUsers(socket) {
 	print(Array.from(userMap.keys()));
-	sendBackToClient(socket, SUB_EVENT_CONNECTED_USERS,  Array.from(userMap.keys()));
+	io.sockets.emit(SUB_EVENT_CONNECTED_USERS, stringifyJson(Array.from(userMap.keys())));
+	//sendBackToClient(socket, SUB_EVENT_CONNECTED_USERS,  Array.from(userMap.keys()));
 }
 
 function singleChatHandler(socket, chat_message) {
