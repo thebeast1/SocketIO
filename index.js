@@ -77,8 +77,15 @@ function onEachUserConnection(socket) {
 }
 
 function sendConnectedUsers(socket) {
-	print(Array.from(userMap.keys()));
-	io.sockets.emit(SUB_EVENT_CONNECTED_USERS, stringifyJson(Array.from(userMap.keys())));
+	let listofusers =[];
+	for (let key of userMap) {
+		listofusers.push(key[0]);
+		listofusers.push(key[1].name);
+	}
+	print(listofusers);
+	io.sockets.emit(SUB_EVENT_CONNECTED_USERS, stringifyJson(listofusers));
+	//print(Array.from(userMap.keys()));
+	//io.sockets.emit(SUB_EVENT_CONNECTED_USERS, stringifyJson(Array.from(userMap.keys())));
 	//sendBackToClient(socket, SUB_EVENT_CONNECTED_USERS,  Array.from(userMap.keys()));
 }
 
