@@ -156,6 +156,8 @@ function removeUserWithSocketIdFromMap(socket_id) {
 	if (undefined != toDeleteUser) {
 		userMap.delete(toDeleteUser);
 	}
+	io.sockets.emit(SUB_EVENT_CONNECTED_USERS, stringifyJson(Array.from(userMap.keys())));
+
 	print(userMap);
 	printNumOnlineUsers();
 }
