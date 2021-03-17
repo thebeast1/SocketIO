@@ -67,11 +67,8 @@ function onEachUserConnection(socket) {
 	addUserToMap(from_user_id, userMapVal);
 	print(userMap);
 	printNumOnlineUsers();
-	userMap.clear();
-	print(userMap);
-	printNumOnlineUsers();
 	//send the connected users...
-	//sendConnectedUsers(socket);
+	sendConnectedUsers(socket);
 	onMessage(socket);
 	checkOnline(socket);
 	onUserDisconnect(socket);
