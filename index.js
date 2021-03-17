@@ -32,7 +32,7 @@ let STATUS_MESSAGE_SENT = 10002;
 
 // This map has all users connected
 const userMap = new Map();
-
+userMap.clear();
 io.sockets.on(ON_CONNECTION, function (socket) {
 	onEachUserConnection(socket);
 });
