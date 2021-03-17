@@ -22,6 +22,7 @@ let EVENT_SINGLE_CHAT_MESSAGE = 'single_chat_message';
 let SUB_EVENT_RECEIVE_MESSAGE = 'receive_message';
 let SUB_EVENT_MESSAGE_FROM_SERVER = 'message_from_server';
 let SUB_EVENT_IS_USER_CONNECTED = 'is_user_connected';
+let SUB_EVENT_CONNECTED_USERS = 'connected_users';
 
 let listen_port = 3000;
 
@@ -66,9 +67,15 @@ function onEachUserConnection(socket) {
 	print(userMap);
 	printNumOnlineUsers();
 
+	//send the connected users...
+	sendConnectedUsers(socket);
 	onMessage(socket);
 	checkOnline(socket);
 	onUserDisconnect(socket);
+}
+
+function sendConnectedUsers(socket) {
+	sendBackToClient(socket, SUB_EVENT_CONNECTED_USERS, userMap);
 }
 
 function singleChatHandler(socket, chat_message) {
