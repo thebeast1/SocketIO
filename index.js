@@ -32,7 +32,7 @@ let STATUS_MESSAGE_SENT = 10002;
 
 // This map has all users connected
 const userMap = new Map();
-userMap.clear();
+
 io.sockets.on(ON_CONNECTION, function (socket) {
 	onEachUserConnection(socket);
 });
@@ -57,6 +57,7 @@ function onUserDisconnect(socket) {
 
 // This function is fired when each user connects to socket
 function onEachUserConnection(socket) {
+	
 	print('---------------------------------------');
 	print('Connected => Socket ID ' + socket.id + ', User: ' + JSON.stringify(socket.handshake.query));
 
@@ -66,7 +67,9 @@ function onEachUserConnection(socket) {
 	addUserToMap(from_user_id, userMapVal);
 	print(userMap);
 	printNumOnlineUsers();
-
+	userMap.clear();
+	print(userMap);
+	printNumOnlineUsers();
 	//send the connected users...
 	//sendConnectedUsers(socket);
 	onMessage(socket);
